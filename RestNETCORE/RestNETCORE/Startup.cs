@@ -1,25 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using RestNETCORE.Services;
-using RestNETCORE.Services.Implementations;
+using RestNETCORE.Model.Context;
+using RestNETCORE.Business;
+using RestNETCORE.Business.Implementations;
+using RestNETCORE.Repository;
+using RestNETCORE.Repository.Implementations;
 
 namespace RestNETCORE
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+
+        private readonly ILogger _logger;
+        public IHostingEnvironment _environment { get; }
+        public Startup(IConfiguration configuration, IHostingEnvironment environment, ILogger<Startup> logger)
         {
             Configuration = configuration;
+            _environment = environment;
+            _logger = logger;
         }
 
         public IConfiguration Configuration { get; }
@@ -27,9 +31,38 @@ namespace RestNETCORE
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            var connection = Configuration["MysqlConnection:MySqlConnectionString"];
+            services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
 
-            services.AddScoped<IPersonService, PersonServiceImpl>();
+            if (_environment.IsDevelopment())
+            {
+                try
+                {
+                    var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(connection);
+
+                    var evolve = new Evolve.Evolve("evolve.json", evolveConnection, msg => _logger.LogInformation(msg))
+                    {
+                        Locations = new List<string> { "db/migrations" },
+                        IsEraseDisabled = true
+                    };
+
+                    evolve.Migrate();
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogCritical("Database migration failed", ex);
+                }
+            }
+
+
+            services.AddMvc();
+
+            //versionamento de api
+            services.AddApiVersioning();
+
+            //Adicionar injeção de dependencia
+            services.AddScoped<IPersonRepository, PersonRepositoryImpl>();
+            services.AddScoped<IPersonBusiness, PersonBusinessImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,12 +72,9 @@ namespace RestNETCORE
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseHsts();
-            }
+          
 
-            app.UseHttpsRedirection();
+            
             app.UseMvc();
         }
     }

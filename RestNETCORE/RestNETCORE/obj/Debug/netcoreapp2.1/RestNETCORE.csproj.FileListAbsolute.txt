@@ -3,12 +3,9 @@ D:\Dev\ProjetosNetCoreUdemy\RestNETCORE\RestNETCORE\RestNETCORE\bin\Debug\netcor
 D:\Dev\ProjetosNetCoreUdemy\RestNETCORE\RestNETCORE\RestNETCORE\bin\Debug\netcoreapp2.1\RestNETCORE.runtimeconfig.dev.json
 D:\Dev\ProjetosNetCoreUdemy\RestNETCORE\RestNETCORE\RestNETCORE\bin\Debug\netcoreapp2.1\RestNETCORE.dll
 D:\Dev\ProjetosNetCoreUdemy\RestNETCORE\RestNETCORE\RestNETCORE\bin\Debug\netcoreapp2.1\RestNETCORE.pdb
-D:\Dev\ProjetosNetCoreUdemy\RestNETCORE\RestNETCORE\RestNETCORE\obj\Debug\netcoreapp2.1\RestNETCORE.csprojAssemblyReference.cache
 D:\Dev\ProjetosNetCoreUdemy\RestNETCORE\RestNETCORE\RestNETCORE\obj\Debug\netcoreapp2.1\RestNETCORE.csproj.CoreCompileInputs.cache
-D:\Dev\ProjetosNetCoreUdemy\RestNETCORE\RestNETCORE\RestNETCORE\obj\Debug\netcoreapp2.1\RestNETCORE.RazorAssemblyInfo.cache
-D:\Dev\ProjetosNetCoreUdemy\RestNETCORE\RestNETCORE\RestNETCORE\obj\Debug\netcoreapp2.1\RestNETCORE.RazorAssemblyInfo.cs
 D:\Dev\ProjetosNetCoreUdemy\RestNETCORE\RestNETCORE\RestNETCORE\obj\Debug\netcoreapp2.1\RestNETCORE.AssemblyInfoInputs.cache
 D:\Dev\ProjetosNetCoreUdemy\RestNETCORE\RestNETCORE\RestNETCORE\obj\Debug\netcoreapp2.1\RestNETCORE.AssemblyInfo.cs
-D:\Dev\ProjetosNetCoreUdemy\RestNETCORE\RestNETCORE\RestNETCORE\obj\Debug\netcoreapp2.1\RestNETCORE.RazorTargetAssemblyInfo.cache
 D:\Dev\ProjetosNetCoreUdemy\RestNETCORE\RestNETCORE\RestNETCORE\obj\Debug\netcoreapp2.1\RestNETCORE.dll
 D:\Dev\ProjetosNetCoreUdemy\RestNETCORE\RestNETCORE\RestNETCORE\obj\Debug\netcoreapp2.1\RestNETCORE.pdb
+D:\Dev\ProjetosNetCoreUdemy\RestNETCORE\RestNETCORE\RestNETCORE\obj\Debug\netcoreapp2.1\RestNETCORE.csprojAssemblyReference.cache
